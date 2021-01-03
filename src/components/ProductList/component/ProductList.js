@@ -11,52 +11,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ProductList() {
+export default function ProductList(props) {
     const classes = useStyles();
 
     return (
         <>
             <Paper className={classes.paper}>
                 <Grid container justify="center" spacing={1}>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
-                    <Grid item>
-                        <ProductCard />
-                    </Grid>
+                    {props.product && props.product.map((data, index) => {
+                        return (
+                            <Grid item>
+                                <ProductCard details={data} {...props} />
+                            </Grid>
+                        )
+                    })}
+
                 </Grid>
             </Paper>
         </>

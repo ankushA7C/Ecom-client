@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,6 +15,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Avatar from '@material-ui/core/Avatar';
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -115,8 +117,10 @@ export default function Header() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
+
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
         </Menu>
     );
 
@@ -131,21 +135,21 @@ export default function Header() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
+            {/* <MenuItem>
                 <IconButton aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="secondary">
                         <MailIcon />
                     </Badge>
                 </IconButton>
                 <p>Messages</p>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
                     <Badge badgeContent={11} color="secondary">
                         <ShoppingCartIcon />
                     </Badge>
                 </IconButton>
-                <p>Notifications</p>
+                <p>Cart</p>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
@@ -191,13 +195,13 @@ export default function Header() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
+                        {/* <IconButton aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <MailIcon />
                             </Badge>
-                        </IconButton>
+                        </IconButton> */}
                         <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
+                            <Badge badgeContent={useSelector(state => state.cart.list.length)} color="secondary">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>

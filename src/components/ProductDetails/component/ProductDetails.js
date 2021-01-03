@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function ProductDetails() {
+export default function ProductDetails(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleClose = () => {
@@ -60,24 +60,24 @@ export default function ProductDetails() {
                 <Grid container spacing={2}>
                     <Grid item>
                         <ButtonBase className={classes.image} onClick={handleToggle}>
-                            <img className={classes.img} alt="complex" src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
+                            <img className={classes.img} alt="complex" src={props.location.state.product.image} />
                         </ButtonBase>
                     </Grid>
                     <Grid item xs={12} sm container>
                         <Grid item xs container direction="column" spacing={2} className={classes.grid}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="h4">
-                                    Standard license
-                                  </Typography>
+                                    {props.location.state.product.title}
+                                </Typography>
                                 <Typography variant="body2" gutterBottom>
-                                    Full resolution 1920x1080 • JPEG
-                                 </Typography>
+                                    {props.location.state.product.category}
+                                </Typography>
                                 <Typography variant="body2" color="textSecondary">
-                                    Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty
-                                 </Typography>
+                                    {props.location.state.product.description}
+                                </Typography>
                                 <Typography variant="h5" color="textSecondary" gutterBottom>
-                                    ID: 1030114
-                                 </Typography>
+                                    ${props.location.state.product.price}
+                                </Typography>
                                 <Grid item >
                                     <Button variant="contained" className={classes.button}>Add To Cart </Button>
                                     <Button variant="contained" color="primary" className={classes.button}>
@@ -88,12 +88,12 @@ export default function ProductDetails() {
                         </Grid>
                     </Grid>
                     <Grid item xs={12} sm container className={classes.producList}>
-                        <ProductList />
+                        <ProductList {...props} />
                     </Grid>
                 </Grid>
             </Paper>
             <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
-                <img className={classes.img} alt="complex" src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
+                <img className={classes.img} alt="complex" src={props.location.state.product.image} />
 
             </Backdrop>
         </div>
