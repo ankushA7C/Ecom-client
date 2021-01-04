@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Header() {
+export default function Header(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -200,7 +200,7 @@ export default function Header() {
                                 <MailIcon />
                             </Badge>
                         </IconButton> */}
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
+                        <IconButton aria-label="show 17 new notifications" color="inherit" onClick={e => props.history.push("/app/cart")}>
                             <Badge badgeContent={useSelector(state => state.cart.list.length)} color="secondary">
                                 <ShoppingCartIcon />
                             </Badge>

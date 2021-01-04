@@ -7,6 +7,7 @@ import Header from '../../Header/index'
 import Footer from '../../Footer/index'
 import Home from '../../../routes/app/home/index'
 import View from '../../../routes/app/view/index'
+import Cart from '../../../routes/app/cart/index'
 import axios from 'axios';
 
 
@@ -23,10 +24,11 @@ function AppLayout(props) {
     }, []);
 
     return (
-        <><Header />
+        <><Header {...props} />
             <Switch>
                 <SecureRoute path={`${props.match.url}/home`} component={Home} product={product} />
                 <SecureRoute path={`${props.match.url}/view`} component={View} product={product} />
+                <SecureRoute path={`${props.match.url}/cart`} component={Cart} />
             </Switch>
             <Footer />
         </>
